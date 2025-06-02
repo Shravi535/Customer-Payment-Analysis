@@ -9,7 +9,8 @@ Excel – for data cleaning and trend analysis
 
 Tableau – for dashboard visualization
 
-📊 Step-by-Step Walkthrough:
+
+📊** Step-by-Step Walkthrough:**
 1. Data Collection (Mock Data)
 I created a simulated dataset that included:
 
