@@ -4,9 +4,7 @@ Invoices(invoice_id, customer_id, invoice_date, amount)
 Payments(payment_id, invoice_id, payment_date, amount_paid)
 
 ✅ 1. Total Invoiced Amount by Customer
-sql
-Copy
-Edit
+Query
 SELECT c.customer_name, 
        SUM(i.amount) AS total_invoiced
 FROM Customers c
@@ -14,9 +12,7 @@ JOIN Invoices i ON c.customer_id = i.customer_id
 GROUP BY c.customer_name;
 
 ✅ 2. Total Payments Made by Customer
-sql
-Copy
-Edit
+Query
 SELECT c.customer_name, 
        SUM(p.amount_paid) AS total_paid
 FROM Payments p
@@ -25,9 +21,7 @@ JOIN Customers c ON i.customer_id = c.customer_id
 GROUP BY c.customer_name;
 
 ✅ 3. Outstanding Balance by Customer
-sql
-Copy
-Edit
+Query
 SELECT c.customer_name,
        SUM(i.amount) - COALESCE(SUM(p.amount_paid), 0) AS outstanding_balance
 FROM Invoices i
@@ -36,9 +30,7 @@ JOIN Customers c ON i.customer_id = c.customer_id
 GROUP BY c.customer_name;
 
 ✅ 4. Average Payment Delay (in days)
-sql
-Copy
-Edit
+Query
 SELECT c.customer_name,
        AVG(DATEDIFF(day, i.invoice_date, p.payment_date)) AS avg_payment_delay
 FROM Payments p
@@ -47,9 +39,7 @@ JOIN Customers c ON i.customer_id = c.customer_id
 GROUP BY c.customer_name;
 
 ✅ 5. AR Aging Buckets
-sql
-Copy
-Edit
+Query
 SELECT c.customer_name,
        CASE 
          WHEN DATEDIFF(day, i.invoice_date, GETDATE()) <= 30 THEN '0-30 Days'
